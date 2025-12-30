@@ -4,7 +4,8 @@ const boardList = document.getElementById("board-list");
 // 게시글 데이터를 받아오기 위한 함수
 const getList = async () => {
     // axios문법
-    let res = await axios.get("http://localhost:8081/list");
+    // let res = await axios.get("http://localhost:8081/api/board/list");
+    let res = await axios.get("/api/board/list");
     console.log(res.data);
 
     let boards = res.data; //서버에서 받아온 데이터
@@ -21,7 +22,7 @@ const getList = async () => {
         resultHTML += `
         <tr>
             <td>${boards[i].b_idx}</td>
-            <td>${boards[i].b_title}</td>
+            <td><a href="boardDetail.html?idx=${boards[i].b_idx}">${boards[i].b_title}</a></td>
             <td>${boards[i].b_writer}</td>
             <td>${boards[i].b_datetime}</td>
             <td>${boards[i].b_count}</td>
